@@ -8,28 +8,29 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
-#include "exampleConfig.h"
-#include "example.h"
+static char input[256];
 
-/*
- * Simple main program that demontrates how access
- * CMake definitions (here the version number) from source code.
- */
 int main() {
-  std::cout << "C++ Boiler Plate v"
-            << PROJECT_VERSION_MAJOR
-            << "."
-            << PROJECT_VERSION_MINOR
-            << "."
-            << PROJECT_VERSION_PATCH
-            << "."
-            << PROJECT_VERSION_TWEAK
-            << std::endl;
-  std::system("cat ../LICENSE");
+  printf("---- Al Pal Shell 😎 ----\n");
 
-  // Bring in the dummy class from the example source,
-  // just to show that it is accessible from main.cpp.
-  Dummy d = Dummy();
-  return d.doSomething() ? 0 : -1;
+  while(!feof(stdin) && !ferror(stdin))
+  {
+     // prompt
+     printf("😎-> ");
+
+     // request input
+     fgets(input, 256, stdin);
+
+     // hmmm
+     printf("invalid command: %s", input);
+
+     // clear the contents of input
+     memset(input, 0, sizeof(input));
+  }
+
+  printf("\n----- Goodbye. -----\n");
+  return 0;
 }
